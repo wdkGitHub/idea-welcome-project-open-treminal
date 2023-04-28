@@ -17,10 +17,6 @@ import java.lang.reflect.Method;
  */
 public class OpenInTerminal extends AnAction {
 
-    public OpenInTerminal() {
-        setEnabledInModalContext (true);
-    }
-
     @Override
     public @NotNull ActionUpdateThread getActionUpdateThread() {
         return ActionUpdateThread.EDT;
@@ -36,11 +32,7 @@ public class OpenInTerminal extends AnAction {
             String exceptionMessage = "项目信息对象获取错误";
             throw new RuntimeException (exceptionMessage);
         }
-        if (recentProjectItem != null && "com.intellij.openapi.wm.impl.welcomeScreen.recentProjects.RecentProjectItem".equals (recentProjectItem.getClass ().getName ())) {
-            e.getPresentation ().setEnabled (true);
-        } else {
-            e.getPresentation ().setEnabled (false);
-        }
+        e.getPresentation ().setEnabledAndVisible (recentProjectItem != null && "com.intellij.openapi.wm.impl.welcomeScreen.recentProjects.RecentProjectItem".equals (recentProjectItem.getClass ().getName ()));
 
     }
 
