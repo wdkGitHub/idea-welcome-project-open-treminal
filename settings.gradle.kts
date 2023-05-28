@@ -1,1 +1,1 @@
-rootProject.name = "OpenInTerminal"
+rootProject.name = "OpenInApp"

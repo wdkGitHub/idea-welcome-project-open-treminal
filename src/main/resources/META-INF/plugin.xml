@@ -1,11 +1,11 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
-    <id>dekun.wang.open.in.terminal.OpenInTerminal</id>
+    <id>dekun.wang.OpenInApp</id>
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-    <name>OpenInTerminal</name>
+    <name>OpenInNativeApp</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor email="wangdekunemail@gmeil.com" url="https://www.yourcompany.com">王德坤</vendor>
@@ -14,7 +14,7 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-    简陋版本插件， 自用插件。 用于在最近项目中直接打开终端。 目前仅仅支持Mac系统 iterm2软件打开。
+    简陋版本插件， 自用插件。 用于在最近项目中直接打开终端等。 目前仅仅支持Mac系统 iterm2软件打开。
     <br>
     <br>
     自用，能用就好。代码就不适配、优化了
@@ -31,10 +31,20 @@
 
     </extensions>
     <actions>
-        <action id="dekun.wang.open.in.terminal.open.in.terminal" class="dekun.wang.open.in.terminal.OpenInTerminal"
+        <action id="dekun.wang.open.in.terminal.open.in.terminal" class="dekun.wang.OpenInTerminal"
                 text="在iTerm2中显示">
             <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
                           relative-to-action="WelcomeScreen.RevealIn"/>
+        </action>
+        <action id="dekun.wang.open.in.fork" class="dekun.wang.ForkApp"
+                text="Open In Fork">
+            <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
+                          relative-to-action="dekun.wang.open.in.terminal.open.in.terminal"/>
+        </action>
+        <action id="dekun.wang.open.in.sourcetree" class="dekun.wang.SourcetreeApp"
+                text="Open In Sourcetree">
+            <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
+                          relative-to-action="dekun.wang.open.in.fork"/>
         </action>
     </actions>
 </idea-plugin>
