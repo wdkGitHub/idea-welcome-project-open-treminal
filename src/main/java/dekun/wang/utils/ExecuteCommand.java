@@ -41,6 +41,7 @@ public class ExecuteCommand {
     }
 
     public static void GitOpen(String projectPath) {
+        //brew search git-open
         String command = System.getProperty("user.home") + "/.oh-my-zsh/custom/plugins/git-open/git-open";
         ProcessBuilder executeCommand = new ProcessBuilder(command).directory(new File(projectPath));
         try {
