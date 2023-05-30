@@ -23,11 +23,11 @@ public class ForkApp extends AnAction {
     @Override
     public void update(@NotNull AnActionEvent event) {
         try {
-            Object recentProjectItem = ProjectPath.getRecentProjectItem (event);
+            Object recentProjectItem = ProjectInfo.getRecentProjectItem (event);
             event.getPresentation ().setEnabledAndVisible (
                     recentProjectItem != null
                             && "com.intellij.openapi.wm.impl.welcomeScreen.recentProjects.RecentProjectItem".equals (recentProjectItem.getClass ().getName ())
-                            && ProjectPath.isGitRepository (event)
+                            && ProjectInfo.isGitRepository (event)
             );
         } catch (Exception ex) {
             throw new RuntimeException ("项目信息对象获取错误");
@@ -37,7 +37,7 @@ public class ForkApp extends AnAction {
     @Override
     public void actionPerformed(@NotNull AnActionEvent event) {
         try {
-            String projectPath = ProjectPath.getProjectPath (event);
+            String projectPath = ProjectInfo.getProjectPath (event);
             // 命令非全路径，报错如下。系统自带命令不会报错
             /*
             Cannot run program "fork" (in directory "/A/B/C"): error=2, No such file or directory

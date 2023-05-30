@@ -1,18 +1,39 @@
 package dekun.wang;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.diagnostic.Logger;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author WangDeKun
  *
  * <p>
  */
-public class ProjectPath {
+public class ProjectInfo {
+    private static final Logger LOG = Logger.getInstance(ProjectInfo.class);
+    public static boolean hasRemoteRepository(AnActionEvent event) throws ClassNotFoundException, InvocationTargetException, IllegalAccessException, NoSuchMethodException, InstantiationException, IOException {
+        List<String> list = new ArrayList<>();
+        ProcessBuilder executeCommand = new ProcessBuilder("/usr/bin/git", "remote", "-v").directory(new File(getProjectPath(event)));
+        Process start = executeCommand.start();
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(start.getInputStream(), StandardCharsets.UTF_8));) {
+            String line = null;
+            while ((line = bufferedReader.readLine()) != null) {
+                list.add(line);
+            }
+        }
+        LOG.info(list.toString());
+        return list.size() > 0;
+    }
 
     public static boolean isGitRepository(AnActionEvent event) throws ClassNotFoundException, InvocationTargetException, IllegalAccessException, NoSuchMethodException, InstantiationException {
         File file = new File (getProjectPath (event).replaceAll ("(.)/$", "$1") + "/.git");

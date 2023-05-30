@@ -5,8 +5,6 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.InvocationTargetException;
-
 
 /**
  * @author wdk
@@ -23,7 +21,7 @@ public class OpenInTerminal extends AnAction {
     @Override
     public void update(@NotNull AnActionEvent event) {
         try {
-            Object recentProjectItem = ProjectPath.getRecentProjectItem (event);
+            Object recentProjectItem = ProjectInfo.getRecentProjectItem (event);
             event.getPresentation ().setEnabledAndVisible (recentProjectItem != null
                     && "com.intellij.openapi.wm.impl.welcomeScreen.recentProjects.RecentProjectItem".equals (recentProjectItem.getClass ().getName ()));
         } catch (Exception ex) {
@@ -34,7 +32,7 @@ public class OpenInTerminal extends AnAction {
     @Override
     public void actionPerformed(@NotNull AnActionEvent event) {
         try {
-            String projectPath = ProjectPath.getProjectPath (event);
+            String projectPath = ProjectInfo.getProjectPath (event);
             ProcessBuilder executeCommand = new ProcessBuilder ("open", "-a", "/Applications/iTerm.app", projectPath);
             executeCommand.start ();
         } catch (Exception e) {

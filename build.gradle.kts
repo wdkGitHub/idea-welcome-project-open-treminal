@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "dekun.wang.open.in.terminal"
-version = "0.1.1-SNAPSHOT"
+version = "0.1.3-SNAPSHOT"
 
 repositories {
     mavenCentral()

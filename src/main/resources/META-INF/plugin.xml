@@ -36,10 +36,15 @@
             <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
                           relative-to-action="WelcomeScreen.RevealIn"/>
         </action>
+        <action id="dekun.wang.git.open" class="dekun.wang.GitOpen"
+                text="Open Open">
+            <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
+                          relative-to-action="dekun.wang.open.in.terminal.open.in.terminal"/>
+        </action>
         <action id="dekun.wang.open.in.fork" class="dekun.wang.ForkApp"
                 text="Open In Fork">
             <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
-                          relative-to-action="dekun.wang.open.in.terminal.open.in.terminal"/>
+                          relative-to-action="dekun.wang.git.open"/>
         </action>
         <action id="dekun.wang.open.in.sourcetree" class="dekun.wang.SourcetreeApp"
                 text="Open In Sourcetree">
