@@ -1,1 +1,1 @@
-rootProject.name = "OpenInApp"
+rootProject.name = "WelcomeScreenRecentProjectActionGroupExt"

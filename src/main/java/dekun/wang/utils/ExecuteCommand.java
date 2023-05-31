@@ -1,7 +1,11 @@
 package dekun.wang.utils;
 
+import com.intellij.openapi.diagnostic.Logger;
+import org.junit.Assert;
+
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author WangDeKun
@@ -9,44 +13,37 @@ import java.io.IOException;
  * <p>
  */
 public class ExecuteCommand {
-    public static void OpenInFork(String projectPath) {
-        // 命令非全路径，报错如下。系统自带命令不会报错
-            /*
-            Cannot run program "fork" (in directory "/A/B/C"): error=2, No such file or directory
-             */
-        ProcessBuilder executeCommand = new ProcessBuilder("/usr/local/bin/fork", ".").directory(new File(projectPath));
-        try {
-            executeCommand.start();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    private static final Logger LOG = Logger.getInstance(ExecuteCommand.class);
+
+    public static void execute(String directoryPath, CommandOrApp.App app) {
+        execute(directoryPath, app, null, null);
     }
 
-    public static void OpenInSourcetree(String projectPath) {
-        ProcessBuilder executeCommand = new ProcessBuilder("/usr/local/bin/stree", ".").directory(new File(projectPath));
-        try {
-            executeCommand.start();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public static void execute(String directoryPath, CommandOrApp.Command command) {
+        execute(directoryPath, null, command, null);
     }
 
-    public static void OpenInTerminal(String projectPath) {
-        ProcessBuilder executeCommand = new ProcessBuilder("open", "-a", "/Applications/iTerm.app", projectPath);
-        try {
-            executeCommand.start();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public static void execute(String directoryPath, List<String> commandList) {
+        execute(directoryPath, null, null, commandList);
     }
 
-    public static void GitOpen(String projectPath) {
-        //brew search git-open
-        String command = System.getProperty("user.home") + "/.oh-my-zsh/custom/plugins/git-open/git-open";
-        ProcessBuilder executeCommand = new ProcessBuilder(command).directory(new File(projectPath));
+    private static void execute(String directoryPath, CommandOrApp.App app, CommandOrApp.Command command, List<String> commandList) {
+        Assert.assertNotNull("directoryPath is null", directoryPath);
+        File file = new File(directoryPath);
+        ProcessBuilder executeCommand = null;
+        if (app != null && command == null && commandList == null) {
+            executeCommand = new ProcessBuilder(app.getCommand()).directory(file);
+        } else if (command != null && app == null && commandList == null) {
+            executeCommand = new ProcessBuilder(command.getCommand()).directory(file);
+        } else {
+            if (commandList == null || commandList.size() == 0)
+                throw new RuntimeException("输入命令错误");
+            executeCommand = new ProcessBuilder(commandList).directory(file);
+        }
         try {
             executeCommand.start();
         } catch (IOException e) {
+            LOG.error(e.getMessage());
             throw new RuntimeException(e);
         }
     }

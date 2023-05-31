@@ -1,55 +1,57 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
-    <id>dekun.wang.OpenInApp</id>
-
+    <id>dekun.wang.welcome.screen.ext</id>
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-    <name>OpenInNativeApp</name>
-
-    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="wangdekunemail@gmeil.com" url="https://www.yourcompany.com">王德坤</vendor>
+    <name>WelcomeScreenRecentProjectActionGroupExt</name>
+    <vendor email="wangdekunemail@gmeil.com" url="https://blog.dekun.wang">WangDekun</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
-    <description><![CDATA[
-    简陋版本插件， 自用插件。 用于在最近项目中直接打开终端等。 目前仅仅支持Mac系统 iterm2软件打开。
+    <description>
+    <![CDATA[
+     欢迎屏幕最近的项目开始组扩展
+    <br>
+         - 增加在终端、Fork、Sourcetree应用打开项目。
+    <br>
+         - 增加 git-open浏览器打开远程仓库
+    <br>
+         - 适配 MacOs
     <br>
     <br>
-    自用，能用就好。代码就不适配、优化了
-
-     ]]></description>
+     ]]>
+    </description>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
-
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
 
     </extensions>
     <actions>
-        <action id="dekun.wang.open.in.terminal.open.in.terminal" class="dekun.wang.OpenInTerminal"
-                text="在iTerm2中显示">
+        <action id="dekun.wang.terminal" class="dekun.wang.OpenInTerminal"
+                text="Open In Terminal">
             <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
                           relative-to-action="WelcomeScreen.RevealIn"/>
         </action>
         <action id="dekun.wang.git.open" class="dekun.wang.GitOpen"
-                text="Open Open">
+                text="Git Open">
             <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
-                          relative-to-action="dekun.wang.open.in.terminal.open.in.terminal"/>
+                          relative-to-action="dekun.wang.terminal"/>
         </action>
-        <action id="dekun.wang.open.in.fork" class="dekun.wang.ForkApp"
+        <action id="dekun.wang.fork" class="dekun.wang.ForkApp"
                 text="Open In Fork">
             <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
                           relative-to-action="dekun.wang.git.open"/>
         </action>
-        <action id="dekun.wang.open.in.sourcetree" class="dekun.wang.SourcetreeApp"
+        <action id="dekun.wang.sourcetree" class="dekun.wang.SourcetreeApp"
                 text="Open In Sourcetree">
             <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
-                          relative-to-action="dekun.wang.open.in.fork"/>
+                          relative-to-action="dekun.wang.fork"/>
         </action>
     </actions>
 </idea-plugin>

@@ -4,8 +4,8 @@ plugins {
     id("org.jetbrains.intellij") version "1.13.1"
 }
 
-group = "dekun.wang.open.in.terminal"
-version = "0.1.4-SNAPSHOT"
+group = "dekun.wang"
+version = "0.1.5-SNAPSHOT"
 
 repositories {
     mavenCentral()
