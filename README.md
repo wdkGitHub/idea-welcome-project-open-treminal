@@ -6,7 +6,7 @@
 >       - 增加 git-open浏览器打开远程仓库
 >       - 仅适配 MacOs
 
+<img width="1132" alt="iShot_2023-05-31_20 44 25" src="https://github.com/wdkGitHub/WelcomeScreenRecentProjectActionGroupExt/assets/12813051/f8414163-8636-4ffd-924d-b14b6b5cee1f">
 
 
 
-<img width="921" alt="iShot_2023-04-25_18 33 18" src="https://user-images.githubusercontent.com/12813051/234265055-bc5f8b0f-a621-4f1e-a0fe-1df6177ab5c9.png">
