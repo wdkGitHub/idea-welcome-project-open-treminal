@@ -2,8 +2,8 @@ package dekun.wang.utils;
 
 
 import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.openapi.util.SystemInfo;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,42 +17,39 @@ public final class CommandOrApp {
     private static final Logger LOG = Logger.getInstance(CommandOrApp.class);
     private static final String POINT = ".";
 
-//    public static void main(String[] args) {
-//        System.out.println(App.iTerm_APP);
-//        System.out.println(Command.Fork_Command);
-//    }
+    private static final String FORK_PATH;
+    private static final String SOURCETREE_PATH;
+    private static final String GIT_OPEN_PATH;
 
+    static {
+        if (SystemInfo.isMac) {
+            FORK_PATH = "/usr/local/bin/fork";
+            SOURCETREE_PATH = "/usr/local/bin/stree";
+            GIT_OPEN_PATH = System.getProperty("user.home") + "/.oh-my-zsh/custom/plugins/git-open/git-open";
+        } else {
+            FORK_PATH = null;
+            SOURCETREE_PATH = null;
+            GIT_OPEN_PATH = null;
+            throw new RuntimeException("系统暂不支持");
+        }
+    }
+
+    //use com.intellij.openapi.util.SystemInfo
     public enum Command {
-        Fork_Command("fork", POINT),
-        SourceTree_Command("stree", POINT),
-        GitOpen_Command("git-open");
-        private final String commandName;
+        Fork_Command(FORK_PATH, POINT),
+        SourceTree_Command(SOURCETREE_PATH, POINT),
+        GitOpen_Command(GIT_OPEN_PATH);
         private final String commandPath;
         private final List<String> parameters;
 
-
-        Command(String commandName, String... args) {
-            this.commandName = commandName;
-            try {
-                this.commandPath = CommandUtils.whichCommand(commandName);
-            } catch (IOException e) {
-                LOG.error(e.getMessage());
-                throw new RuntimeException(e);
-            }
+        Command(String commandPath, String... args) {
+            this.commandPath = commandPath;
             parameters = new ArrayList<>(args.length);
             parameters.addAll(Arrays.asList(args));
         }
 
-        public String getCommandName() {
-            return commandName;
-        }
-
         public String getCommandPath() {
             return commandPath;
-        }
-
-        public List<String> getParameters() {
-            return parameters;
         }
 
         public List<String> getCommand() {
@@ -63,13 +60,6 @@ public final class CommandOrApp {
             return command;
         }
 
-        @Override
-        public String toString() {
-            return "Command{" +
-                    "commandPath='" + commandPath + '\'' +
-                    ", parameters=" + parameters +
-                    '}';
-        }
     }
 
     public enum App {
@@ -82,22 +72,19 @@ public final class CommandOrApp {
         }
 
         public static List<String> getDefaultTerminalAppCommand() {
-            if (CommandUtils.checkFile(iTerm_APP.getAppInstallPath(), false)) {
-                return iTerm_APP.getCommand();
+            if (SystemInfo.isMac) {
+                if (CommandUtils.checkFile(iTerm_APP.getAppInstallPath(), false)) {
+                    return iTerm_APP.getCommand();
+                }
+                return Terminal_APP.getCommand();
+            } else if (SystemInfo.isWindows) {
+                throw new RuntimeException("系统暂不支持");
             }
-            return Terminal_APP.getCommand();
+            throw new RuntimeException("系统暂不支持");
         }
 
         public String getAppInstallPath() {
             return appInstallPath;
-        }
-
-        @Override
-        public String toString() {
-            return "App{" +
-                    "appInstallPath='" + appInstallPath + '\'' +
-                    ",command=" + getCommand() +
-                    '}';
         }
 
         public List<String> getCommand() {
@@ -108,5 +95,6 @@ public final class CommandOrApp {
             command.add(POINT);
             return command;
         }
+
     }
 }
