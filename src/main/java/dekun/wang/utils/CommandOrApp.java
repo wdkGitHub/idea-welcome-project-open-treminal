@@ -26,6 +26,11 @@ public final class CommandOrApp {
             FORK_PATH = "/usr/local/bin/fork";
             SOURCETREE_PATH = "/usr/local/bin/stree";
             GIT_OPEN_PATH = System.getProperty("user.home") + "/.oh-my-zsh/custom/plugins/git-open/git-open";
+        } else if (SystemInfo.isWindows) {
+            FORK_PATH = null;
+            SOURCETREE_PATH = null;
+            GIT_OPEN_PATH = null;
+            throw new RuntimeException("系统暂不支持");
         } else {
             FORK_PATH = null;
             SOURCETREE_PATH = null;
