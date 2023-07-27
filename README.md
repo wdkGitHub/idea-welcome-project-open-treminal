@@ -10,3 +10,4 @@
 
 
 
+<img width="526" alt="image" src="https://github.com/wdkGitHub/WelcomeScreenRecentProjectActionGroupExt/assets/12813051/d8123f2c-ece1-46fa-9cd5-380d96a5d358">
