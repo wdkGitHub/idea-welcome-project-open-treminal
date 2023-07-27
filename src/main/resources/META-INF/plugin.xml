@@ -3,7 +3,7 @@
     <name>WelcomeScreenRecentProjectActionGroupExt</name>
     <vendor email="wangdekunemail@gmeil.com" url="https://blog.dekun.wang">WangDekun</vendor>
     <description>
-    <![CDATA[
+        <![CDATA[
      欢迎屏幕最近的项目开始组扩展
     <br>
          - 增加在终端、Fork、Sourcetree应用打开项目。
@@ -38,6 +38,13 @@
                 text="Open In Sourcetree">
             <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
                           relative-to-action="dekun.wang.fork"/>
+        </action>
+        <action id="dekun.wang.Typora" class="dekun.wang.Typora" text="Typora Open">
+            <add-to-group group-id="RunContextPopupGroup" anchor="before" relative-to-action="OpenInBrowserGroup"/>
+        </action>
+        <action id="dekun.wang.ITerm2" class="dekun.wang.ITerm2" text="Iterm2">
+            <add-to-group group-id="RunContextPopupGroup" anchor="after" relative-to-action="dekun.wang.Typora"/>
+<!--            <add-to-group group-id="MainToolbarRight" anchor="before" relative-to-action="ExecutionTargetsToolbarGroup"/>-->
         </action>
     </actions>
 </idea-plugin>
