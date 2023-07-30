@@ -36,7 +36,7 @@ public class ExecuteCommand {
         } else if (command != null && app == null && commandList == null) {
             executeCommand = new ProcessBuilder(command.getCommand()).directory(file);
         } else {
-            if (commandList == null || commandList.size() == 0)
+            if (commandList == null || commandList.isEmpty())
                 throw new RuntimeException("输入命令错误");
             executeCommand = new ProcessBuilder(commandList).directory(file);
         }
