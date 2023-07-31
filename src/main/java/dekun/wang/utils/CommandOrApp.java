@@ -61,7 +61,7 @@ public final class CommandOrApp {
             int size = 1 + parameters.size();
             List<String> command = new ArrayList<>(size);
             command.add(commandPath);
-            if (parameters.size() > 0) command.addAll(parameters);
+            if (!parameters.isEmpty()) command.addAll(parameters);
             return command;
         }
 
