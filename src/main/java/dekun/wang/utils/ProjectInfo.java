@@ -75,7 +75,7 @@ public class ProjectInfo {
             throw new RuntimeException(e);
         }
         LOG.info(list.toString());
-        return list.size() > 0;
+        return !list.isEmpty();
     }
 
 }
