@@ -66,10 +66,11 @@ public class ProjectInfo {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        String regex = "^origin\\shttp[s]*://.*\\s\\(((push)|(fetch))\\)";
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(start.getInputStream(), StandardCharsets.UTF_8));) {
             String line = null;
             while ((line = bufferedReader.readLine()) != null) {
-                list.add(line);
+                if (line.matches(regex)) list.add(line);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

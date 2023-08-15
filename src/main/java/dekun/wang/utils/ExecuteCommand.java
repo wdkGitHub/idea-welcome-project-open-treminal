@@ -1,7 +1,6 @@
 package dekun.wang.utils;
 
 import com.intellij.openapi.diagnostic.Logger;
-import org.junit.Assert;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,7 +27,7 @@ public class ExecuteCommand {
     }
 
     private static void execute(String directoryPath, CommandOrApp.App app, CommandOrApp.Command command, List<String> commandList) {
-        Assert.assertNotNull("directoryPath is null", directoryPath);
+//        Assert.assertNotNull("directoryPath is null", directoryPath);
         File file = new File(directoryPath);
         ProcessBuilder executeCommand = null;
         if (app != null && command == null && commandList == null) {

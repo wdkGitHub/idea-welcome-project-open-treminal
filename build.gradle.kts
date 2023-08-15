@@ -6,7 +6,7 @@ plugins {
 
 group = "dekun.wang"
 //version = "1.0.1-SNAPSHOT"
-version = "1.0.3"
+version = "1.0.4"
 
 repositories {
     mavenCentral()
