@@ -20,30 +20,30 @@
     </extensions>
     <actions>
         <action id="dekun.wang.terminal" class="dekun.wang.OpenInTerminal"
-                text="Open In Terminal">
+                text="终端打开">
             <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
                           relative-to-action="WelcomeScreen.RevealIn"/>
         </action>
         <action id="dekun.wang.git.open" class="dekun.wang.GitOpen"
-                text="Git Open">
+                text="远程仓库">
             <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
                           relative-to-action="dekun.wang.terminal"/>
         </action>
         <action id="dekun.wang.fork" class="dekun.wang.ForkApp"
-                text="Open In Fork">
+                text="Fork打开">
             <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
                           relative-to-action="dekun.wang.git.open"/>
         </action>
         <action id="dekun.wang.sourcetree" class="dekun.wang.SourcetreeApp"
-                text="Open In Sourcetree">
+                text="Sourcetree打开">
             <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
                           relative-to-action="dekun.wang.fork"/>
         </action>
-        <action id="dekun.wang.Typora" class="dekun.wang.Typora" text="Typora"
-        icon="Icons.Markdown">
+        <action id="dekun.wang.Typora" class="dekun.wang.Typora" text="Typora打开"
+                icon="Icons.Markdown">
             <add-to-group group-id="RunContextPopupGroup" anchor="before" relative-to-action="OpenInBrowserGroup"/>
         </action>
-        <action id="dekun.wang.ITerm2" class="dekun.wang.ITerm2" text="Iterm2"
+        <action id="dekun.wang.ITerm2" class="dekun.wang.ITerm2" text="Iterm2打开"
                 icon="Icons.TERMINAL_ICON">
             <add-to-group group-id="RunContextPopupGroup" anchor="after" relative-to-action="dekun.wang.Typora"/>
             <add-to-group group-id="MainToolbarRight" anchor="before"
