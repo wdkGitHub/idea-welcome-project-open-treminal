@@ -23,12 +23,12 @@ public class ProjectInfo {
     private static final Logger LOG = Logger.getInstance(ProjectInfo.class);
 
     private static Object getRecentProjectItem(AnActionEvent event) throws RuntimeException, InvocationTargetException, IllegalAccessException, NoSuchMethodException, InstantiationException, ClassNotFoundException {
-        Class<?> RecentProjectsWelcomeScreenActionBase$Companion = Class.forName("com.intellij.openapi.wm.impl.welcomeScreen.projectActions.RecentProjectsWelcomeScreenActionBase$Companion");
-        Constructor<?> CompanionConstructor = RecentProjectsWelcomeScreenActionBase$Companion.getDeclaredConstructor();
+        Class<?> Companion  = Class.forName("com.intellij.openapi.wm.impl.welcomeScreen.projectActions.RecentProjectsWelcomeScreenActionBase$Companion");
+        Constructor<?> CompanionConstructor = Companion .getDeclaredConstructor();
         CompanionConstructor.setAccessible(true);
         Object companion = CompanionConstructor.newInstance();
-        Method getSelectedItem$intellijPlatformIdeImpl = RecentProjectsWelcomeScreenActionBase$Companion.getMethod("getSelectedItem$intellij_platform_ide_impl", AnActionEvent.class);
-        return getSelectedItem$intellijPlatformIdeImpl.invoke(companion, event);
+        Method intellijPlatformIdeImpl = Companion .getMethod("getSelectedItem$intellij_platform_ide_impl", AnActionEvent.class);
+        return intellijPlatformIdeImpl.invoke(companion, event);
     }
 
     public static String getProjectPath(AnActionEvent event) {
