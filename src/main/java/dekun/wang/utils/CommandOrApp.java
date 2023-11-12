@@ -41,6 +41,9 @@ public final class CommandOrApp {
 
     //use com.intellij.openapi.util.SystemInfo
     public enum Command {
+        /**
+         *
+         */
         Fork_Command(FORK_PATH, POINT),
         SourceTree_Command(SOURCETREE_PATH, POINT),
         GitOpen_Command(GIT_OPEN_PATH);
@@ -68,6 +71,9 @@ public final class CommandOrApp {
     }
 
     public enum App {
+        /**
+         *
+         */
         iTerm_APP("/Applications/iTerm.app"),
         Terminal_APP("/System/Applications/Utilities/Terminal.app");
         private final String appInstallPath;

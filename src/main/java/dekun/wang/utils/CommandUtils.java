@@ -5,6 +5,9 @@ import org.junit.Assert;
 
 import java.io.File;
 
+/**
+ * @author wdk
+ */
 public class CommandUtils {
     private static final Logger LOG = Logger.getInstance(CommandUtils.class);
 
@@ -14,7 +17,6 @@ public class CommandUtils {
     }
 
     public static boolean checkFile(String appInstallPath, boolean isFile) {
-//        Assert.assertNotNull("App install path is null", appInstallPath);
         File file = new File(appInstallPath);
         if (isFile) {
             return file.exists() && file.isFile();

@@ -2,6 +2,7 @@ package dekun.wang.utils;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.openapi.vfs.VirtualFile;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -23,11 +24,11 @@ public class ProjectInfo {
     private static final Logger LOG = Logger.getInstance(ProjectInfo.class);
 
     private static Object getRecentProjectItem(AnActionEvent event) throws RuntimeException, InvocationTargetException, IllegalAccessException, NoSuchMethodException, InstantiationException, ClassNotFoundException {
-        Class<?> Companion  = Class.forName("com.intellij.openapi.wm.impl.welcomeScreen.projectActions.RecentProjectsWelcomeScreenActionBase$Companion");
-        Constructor<?> CompanionConstructor = Companion .getDeclaredConstructor();
+        Class<?> Companion = Class.forName("com.intellij.openapi.wm.impl.welcomeScreen.projectActions.RecentProjectsWelcomeScreenActionBase$Companion");
+        Constructor<?> CompanionConstructor = Companion.getDeclaredConstructor();
         CompanionConstructor.setAccessible(true);
         Object companion = CompanionConstructor.newInstance();
-        Method intellijPlatformIdeImpl = Companion .getMethod("getSelectedItem$intellij_platform_ide_impl", AnActionEvent.class);
+        Method intellijPlatformIdeImpl = Companion.getMethod("getSelectedItem$intellij_platform_ide_impl", AnActionEvent.class);
         return intellijPlatformIdeImpl.invoke(companion, event);
     }
 
@@ -55,6 +56,14 @@ public class ProjectInfo {
     public static boolean isGitRepository(AnActionEvent event) {
         File file = new File(getProjectPath(event).replaceAll("(.)/$", "$1") + "/.git");
         return file.exists() && file.isDirectory();
+    }
+
+    public static boolean isGitRepository(VirtualFile virtualFile) {
+        if (virtualFile != null && virtualFile.isDirectory()) {
+            return new File(virtualFile.getPath() + "/.git").exists();
+        } else {
+            return false;
+        }
     }
 
     public static boolean hasRemoteRepository(AnActionEvent event) {

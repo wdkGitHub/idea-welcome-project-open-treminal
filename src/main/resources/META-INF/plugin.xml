@@ -19,35 +19,30 @@
     <extensions defaultExtensionNs="com.intellij">
     </extensions>
     <actions>
-        <action id="dekun.wang.terminal" class="dekun.wang.OpenInTerminal"
-                text="终端打开">
-            <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
-                          relative-to-action="WelcomeScreen.RevealIn"/>
+        <action id="dekun.wang.terminal" class="dekun.wang.OpenInTerminal" text="终端打开">
+            <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after" relative-to-action="WelcomeScreen.RevealIn"/>
         </action>
-        <action id="dekun.wang.git.open" class="dekun.wang.GitOpen"
-                text="远程仓库">
-            <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
-                          relative-to-action="dekun.wang.terminal"/>
+        <action id="dekun.wang.git.open" class="dekun.wang.GitOpen" text="远程仓库">
+            <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after" relative-to-action="dekun.wang.terminal"/>
         </action>
-        <action id="dekun.wang.fork" class="dekun.wang.ForkApp"
-                text="Fork打开">
-            <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
-                          relative-to-action="dekun.wang.git.open"/>
+        <action id="dekun.wang.fork" class="dekun.wang.ForkApp" text="Fork打开">
+            <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after" relative-to-action="dekun.wang.git.open"/>
         </action>
-        <action id="dekun.wang.sourcetree" class="dekun.wang.SourcetreeApp"
-                text="Sourcetree打开">
-            <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after"
-                          relative-to-action="dekun.wang.fork"/>
+        <action id="dekun.wang.sourcetree" class="dekun.wang.SourcetreeApp" text="Sourcetree打开">
+            <add-to-group group-id="WelcomeScreenRecentProjectActionGroup" anchor="after" relative-to-action="dekun.wang.fork"/>
         </action>
-        <action id="dekun.wang.Typora" class="dekun.wang.Typora" text="Typora打开"
-                icon="Icons.Markdown">
+        <action id="dekun.wang.Typora" class="dekun.wang.Typora" text="Typora打开" icon="Icons.Markdown">
             <add-to-group group-id="RunContextPopupGroup" anchor="before" relative-to-action="OpenInBrowserGroup"/>
         </action>
-        <action id="dekun.wang.ITerm2" class="dekun.wang.ITerm2" text="Iterm2打开"
-                icon="Icons.TERMINAL_ICON">
+        <action id="dekun.wang.ITerm2" class="dekun.wang.ITerm2" text="Iterm2打开" icon="Icons.TERMINAL_ICON">
             <add-to-group group-id="RunContextPopupGroup" anchor="after" relative-to-action="dekun.wang.Typora"/>
-            <add-to-group group-id="MainToolbarRight" anchor="before"
-                          relative-to-action="ExecutionTargetsToolbarGroup"/>
+            <add-to-group group-id="MainToolbarRight" anchor="before" relative-to-action="ExecutionTargetsToolbarGroup"/>
+        </action>
+        <action id="dekun.wang.SourcetreeAppProject" class="dekun.wang.SourcetreeAppProject" text="Sourcetree打开">
+            <add-to-group group-id="RunContextPopupGroup" anchor="after" relative-to-action="dekun.wang.ITerm2"/>
+        </action>
+        <action id="dekun.wang.ForkAppProject" class="dekun.wang.ForkAppProject" text="Fork打开">
+            <add-to-group group-id="RunContextPopupGroup" anchor="after" relative-to-action="dekun.wang.SourcetreeAppProject"/>
         </action>
     </actions>
 </idea-plugin>

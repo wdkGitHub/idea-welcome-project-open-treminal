@@ -6,7 +6,7 @@ plugins {
 
 group = "dekun.wang"
 //version = "1.0.1-SNAPSHOT"
-version = "1.0.4"
+version = "1.0.5"
 
 repositories {
     mavenCentral()
@@ -17,7 +17,7 @@ repositories {
 intellij {
     version.set("2023.2")
     type.set("IC") // Target IDE Platform
-    plugins.set(listOf(/* Plugin Dependencies */))
+//    plugins.set(listOf(/* Plugin Dependencies */))
 }
 
 tasks {
@@ -32,7 +32,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("222")
-        untilBuild.set("*.*")
+//        untilBuild.set("*.*")
     }
 
 //    signPlugin {
