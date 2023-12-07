@@ -1,7 +1,7 @@
 plugins {
     id("java")
 //    id("org.jetbrains.kotlin.jvm") version "1.7.20"
-    id("org.jetbrains.intellij") version "1.15.0"
+    id("org.jetbrains.intellij") version "1.16.1"
 }
 
 group = "dekun.wang"
@@ -18,6 +18,7 @@ intellij {
     version.set("2023.2")
     type.set("IC") // Target IDE Platform
 //    plugins.set(listOf(/* Plugin Dependencies */))
+    updateSinceUntilBuild.set(false)//多版本兼容，不然根据构建版本设置最大兼容版本
 }
 
 tasks {
