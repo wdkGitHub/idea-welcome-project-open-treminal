@@ -44,5 +44,8 @@
         <action id="dekun.wang.ForkAppProject" class="dekun.wang.ForkAppProject" text="Fork打开">
             <add-to-group group-id="RunContextPopupGroup" anchor="after" relative-to-action="dekun.wang.SourcetreeAppProject"/>
         </action>
+        <action id="dekun.wang.GitOpenProject" class="dekun.wang.GitOpenProject" text="Git Open">
+            <add-to-group group-id="RunContextPopupGroup" anchor="after" relative-to-action="dekun.wang.ForkAppProject"/>
+        </action>
     </actions>
 </idea-plugin>
