@@ -44,11 +44,9 @@ public class Typora extends AnAction {
             String path = psiFile.getParent().getVirtualFile().getPath();
 
             List<String> commandList = new ArrayList<>();
-            //open -a Typora .
             commandList.add("open");
             commandList.add("-a");
             commandList.add("Typora");
-//            commandList.add("/Applications/Typora.app");
             commandList.add(psiFile.getName());
             ExecuteCommand.execute(path, commandList);
         } else {
