@@ -39,7 +39,7 @@ public class ProjectViewState {
                         start = false;
                         boolean autoscrollFromSource = false;
                         boolean autoscrollToSource = false;
-                        boolean openDirectoriesWithSingleClick = false;
+                        // boolean openDirectoriesWithSingleClick = false;
                         for (String opt : projectViewState) {
                             if (opt.trim().contains("name=\"autoscrollFromSource\"")) {
                                 autoscrollFromSource = true;
@@ -47,9 +47,9 @@ public class ProjectViewState {
                             if (opt.trim().contains("name=\"autoscrollToSource\"")) {
                                 autoscrollToSource = true;
                             }
-                            if (opt.trim().contains("name=\"openDirectoriesWithSingleClick\"")) {
-                                openDirectoriesWithSingleClick = true;
-                            }
+                            // if (opt.trim().contains("name=\"openDirectoriesWithSingleClick\"")) {
+                            //     openDirectoriesWithSingleClick = true;
+                            // }
                             projectViewStateModified.add(opt);
                         }
                         if (!autoscrollFromSource) {
@@ -58,9 +58,9 @@ public class ProjectViewState {
                         if (!autoscrollToSource) {
                             projectViewStateModified.add("    <option name=\"autoscrollToSource\" value=\"true\" />");
                         }
-                        if (!openDirectoriesWithSingleClick) {
-                            projectViewStateModified.add("    <option name=\"openDirectoriesWithSingleClick\" value=\"true\" />");
-                        }
+                        // if (!openDirectoriesWithSingleClick) {
+                        //     projectViewStateModified.add("    <option name=\"openDirectoriesWithSingleClick\" value=\"true\" />");
+                        // }
                         modifiedLines.addAll(projectViewStateModified);
                         modifiedLines.add(line);
                     } else {
