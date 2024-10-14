@@ -12,11 +12,18 @@
     <br>
          - 适配 MacOs
     <br>
+     <br>
+         - 总是设置
+           -  一键打开文件
+           -  一键打开目录
+           -  始终选择打开的文件
+    <br>
     <br>
      ]]>
     </description>
     <depends>com.intellij.modules.platform</depends>
     <extensions defaultExtensionNs="com.intellij">
+        <postStartupActivity implementation="dekun.wang.MyStartupActivity"/>
     </extensions>
     <actions>
         <action id="dekun.wang.terminal" class="dekun.wang.OpenInTerminal" text="终端打开">

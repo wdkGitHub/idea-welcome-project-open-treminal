@@ -6,7 +6,7 @@ plugins {
 
 group = "dekun.wang"
 //version = "1.0.1-SNAPSHOT"
-version = "1.0.5"
+version = "1.0.6"
 
 repositories {
     mavenCentral()
@@ -15,7 +15,7 @@ repositories {
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
-    version.set("2023.2")
+    version.set("2024.2")
     type.set("IC") // Target IDE Platform
 //    plugins.set(listOf(/* Plugin Dependencies */))
     updateSinceUntilBuild.set(false)//多版本兼容，不然根据构建版本设置最大兼容版本
@@ -24,8 +24,6 @@ intellij {
 tasks {
     // Set the JVM compatibility versions
     withType<JavaCompile> {
-        sourceCompatibility = "17"
-        targetCompatibility = "17"
     }
 //    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 //        kotlinOptions.jvmTarget = "11"
